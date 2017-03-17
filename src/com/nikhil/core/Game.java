@@ -14,10 +14,17 @@ public class Game extends Canvas implements Runnable {
 	private boolean started = false;
 	private BufferStrategy strategy;
 	private Handler handler;
+	private KeyInput inputMan;
 	
+	public KeyInput getInput() {
+		return inputMan;
+	}
+
 	public Game(float width, float height, String title, boolean dispose) {
-		window = new Window(width, height, title, dispose, this);
 		handler = new Handler();
+		window = new Window(width, height, title, dispose, this);
+		inputMan = new KeyInput();
+		this.addKeyListener(inputMan);
 	}
 
 	public synchronized void start() {

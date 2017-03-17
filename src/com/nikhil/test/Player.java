@@ -16,8 +16,13 @@ public class Player extends Entity {
 	@Override
 	public void tick(float delta) {
 		// Player Ticks
-		x += dx * delta;
-		y += dy * delta;
+		x += dx * delta;	// 'the change in x' or velocity in x
+		y += dy * delta;	// 'the change in y' or velocity in y
+		
+		for (int i = 0; i < Main.enemies.length; i++) {
+			Entity enemy = Main.enemies[i];
+			if(intersects(enemy)) System.out.println("Collided!");
+		}
 	}
 
 	@Override

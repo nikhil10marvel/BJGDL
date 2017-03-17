@@ -6,9 +6,9 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 	
 	//Positional co-ordinates of GameObject
-	public float x;
-	public float y;
-	public float width, height;
+	protected float x;
+	protected float y;
+	protected float width, height;
 	Rectangle hitbox;
     public String ident;
 

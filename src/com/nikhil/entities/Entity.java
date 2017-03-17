@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 
 public abstract class Entity extends GameObject {
 	
-	public float dx;
-	public float dy;
+	protected float dx;
+	protected float dy;
 	Rectangle hitbox;
 	
 
@@ -28,6 +28,7 @@ public abstract class Entity extends GameObject {
 	}
 	
 	public Rectangle getHitbox() {
+		hitbox.setLocation((int)x, (int)y);
 		return hitbox;
 	}
 	
@@ -41,7 +42,13 @@ public abstract class Entity extends GameObject {
 	}
 	
 	public boolean intersects(Entity other){
-		return hitbox.intersects(other.getHitbox());
+		if(other.getHitbox() == null) {
+			throw new RuntimeException("No Hit box for Entity:" + other.ident);
+		} else if(hitbox == null){
+			throw new RuntimeException("Hit box not detected");
+		}else {
+			return hitbox.intersects(other.getHitbox());
+		}
 	}
 
 }

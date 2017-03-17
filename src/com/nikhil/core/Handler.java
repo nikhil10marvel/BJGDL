@@ -36,7 +36,7 @@ public class Handler{
 		for (GameObject tempObject : objs) {
 			tempObject.tick(delta);
 		}
-		System.out.println("Tick [" + ticks + "]");
+		//System.out.println("Tick [" + ticks + "]");
 		ticks++;
 	}
 	
