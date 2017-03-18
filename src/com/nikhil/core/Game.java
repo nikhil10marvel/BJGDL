@@ -3,7 +3,6 @@ package com.nikhil.core;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.GraphicsConfiguration;
 import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
@@ -102,7 +101,7 @@ public class Game extends Canvas implements Runnable {
 		Graphics graphics = getStratGraphics();
 		
 		graphics.setColor(Color.BLACK);
-		graphics.fillRect(0, 0, (int)window.WINDOW_WIDTH, (int)window.WINDOW_HEIGHT);
+		graphics.fillRect(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
 		//Adding black background
 		
 		handler.render(graphics);

@@ -2,10 +2,6 @@ package com.nikhil.core;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class KeyInput extends KeyAdapter{
 	
 	InputEvent[] events;

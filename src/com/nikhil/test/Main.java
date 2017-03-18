@@ -1,10 +1,7 @@
 package com.nikhil.test;
 
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.net.URL;
 
-import com.nikhil.core.DrawUtils;
 import com.nikhil.core.Game;
 import com.nikhil.core.InputEvent;
 import com.nikhil.entities.Entity;
@@ -47,9 +44,6 @@ public class Main {
 		game.getHandler().addObject(enemies[1]);
 		game.getHandler().addObject(enemies[2]);
 		game.getHandler().addImage(new PositionedImage(BufferredImageLoader.loadImageURL("https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300"), 0, 0, null));
-		
-		DrawUtils.grph = game.getHandler().getGraphics();
-		DrawUtils.image(0, 0, BufferredImageLoader.loadImageURL("https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300"), null);
 		
 		//cube.setDX(1.3663333f); //Diagonal movement is in the ration 600:800, 1: 1.333333, 1.3663333 is approx to that 
 		//cube.setDY(1);	//The numbers are obtained through trial and error

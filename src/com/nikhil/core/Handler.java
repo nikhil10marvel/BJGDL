@@ -1,7 +1,6 @@
 package com.nikhil.core;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -14,6 +13,7 @@ public class Handler{
 	LinkedList<GameObject> objs = new LinkedList<GameObject>();
 	ArrayList<PositionedImage> images = new ArrayList<PositionedImage>();
 	private int ticks;
+	private int megticks;
 	Graphics g;
 	
 	
@@ -52,8 +52,12 @@ public class Handler{
 		for (GameObject tempObject : objs) {
 			tempObject.tick(delta);
 		}
-		//System.out.println("Tick [" + ticks + "]");
 		ticks++;
+		if(ticks >= 1000){
+			megticks++;
+			ticks = 0;
+			System.out.println("MEGATICKS " + megticks);
+		}
 	}
 	
 	public GameObject findGameObject(String ident){

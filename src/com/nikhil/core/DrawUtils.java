@@ -11,7 +11,7 @@ public class DrawUtils {
 	public static Color drawColor;
 
 	public DrawUtils(Graphics g) {
-		this.grph = g;
+		grph = g;
 	}
 	
 	public static void box(float x, float y, float length, boolean fill){

@@ -1,11 +1,7 @@
 package com.nikhil.images;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
 import java.awt.image.ImageObserver;
-import java.awt.image.IndexColorModel;
-import java.awt.image.WritableRaster;
-import java.util.Hashtable;
 
 public class PositionedImage{
 	
