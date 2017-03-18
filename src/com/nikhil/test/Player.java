@@ -3,6 +3,7 @@ package com.nikhil.test;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.nikhil.core.DrawUtils;
 import com.nikhil.entities.Entity;
 
 public class Player extends Entity {
@@ -27,9 +28,9 @@ public class Player extends Entity {
 
 	@Override
 	public void render(Graphics g) {
-		// Player Box
-		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, (int)width, (int)height);
+		DrawUtils.grph = g;
+		DrawUtils.drawColor = Color.WHITE;
+		DrawUtils.rect(x, y, width, height, true);
 	}
 
 }

@@ -1,10 +1,15 @@
 package com.nikhil.test;
 
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 
+import com.nikhil.core.DrawUtils;
 import com.nikhil.core.Game;
 import com.nikhil.core.InputEvent;
 import com.nikhil.entities.Entity;
+import com.nikhil.images.BufferredImageLoader;
+import com.nikhil.images.PositionedImage;
 
 /**
  * @author Nikhil
@@ -22,7 +27,6 @@ public class Main {
 	static Enemy[] enemies = {new Enemy(50, 50, "simple_cube_enemy", 5),new Enemy(30, 23, "simple_cube_enemy", 3), new Enemy(98, 98, "simple_cube_enemy", 10)};
 	
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		//Starting game
 		game = new Game(800, 600, "Test Game", false);
 		
@@ -31,9 +35,10 @@ public class Main {
 		enemies[1].genHitbox();
 		enemies[2].genHitbox();
 		
+		
 		//Adding cube
 		game.getHandler().addObject(new Player(10, 10, "simple_cube"));
-		//BJGDL can get Entities or GameObjects with the String ident provided to a GameObject. The GameObject must be in the game, else findGameObject will return null
+		//BJGDL can get  or GameObjects with the String ident provided to a GameObject. The GameObject must be in the game, else findGameObject will return null
 	    cube = game.getHandler().findEntity("simple_cube");	//The GameObject you are referring to must be an entity! In this case it is
 	    cube.genHitbox();
 		
@@ -41,6 +46,10 @@ public class Main {
 		game.getHandler().addObject(enemies[0]);
 		game.getHandler().addObject(enemies[1]);
 		game.getHandler().addObject(enemies[2]);
+		game.getHandler().addImage(new PositionedImage(BufferredImageLoader.loadImageURL("https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300"), 0, 0, null));
+		
+		DrawUtils.grph = game.getHandler().getGraphics();
+		DrawUtils.image(0, 0, BufferredImageLoader.loadImageURL("https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300"), null);
 		
 		//cube.setDX(1.3663333f); //Diagonal movement is in the ration 600:800, 1: 1.333333, 1.3663333 is approx to that 
 		//cube.setDY(1);	//The numbers are obtained through trial and error

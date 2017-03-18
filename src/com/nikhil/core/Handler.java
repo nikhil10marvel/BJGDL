@@ -1,17 +1,20 @@
 package com.nikhil.core;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import com.nikhil.entities.Entity;
 import com.nikhil.entities.GameObject;
+import com.nikhil.images.PositionedImage;
 
 public class Handler{
 	
 	LinkedList<GameObject> objs = new LinkedList<GameObject>();
-	private float delta;
-	private Graphics grph;
+	ArrayList<PositionedImage> images = new ArrayList<PositionedImage>();
 	private int ticks;
+	Graphics g;
 	
 	
 	public void addObject(GameObject obj){
@@ -26,7 +29,20 @@ public class Handler{
 		this.objs.remove(index);
 	}
 	
+	public Graphics getGraphics() throws RuntimeException{
+		if(g == null) throw new RuntimeException("Sorry Graphics not yet initalized");
+		else return g;
+	}
+	
+	public void addImage(PositionedImage image){
+		images.add(image);
+	}
+	
 	protected void render(Graphics g){
+		this.g = g;
+		for (PositionedImage positionedImage : images) {
+			g.drawImage(positionedImage.bufferedImage, positionedImage.x, positionedImage.y, positionedImage.observer);
+		}
 		for (GameObject tempObject : objs) {
 			tempObject.render(g);
 		}

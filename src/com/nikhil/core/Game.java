@@ -99,7 +99,7 @@ public class Game extends Canvas implements Runnable {
 		// If there is no buffer (there is none usually at the start) create a new one and return
 		
 		//Getting graphics
-		Graphics graphics = strategy.getDrawGraphics();
+		Graphics graphics = getStratGraphics();
 		
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, (int)window.WINDOW_WIDTH, (int)window.WINDOW_HEIGHT);
@@ -110,6 +110,10 @@ public class Game extends Canvas implements Runnable {
 		//Disposing graphics and showing buffer
 		graphics.dispose();
 		strategy.show();
+	}
+	
+	private Graphics getStratGraphics(){
+		return strategy.getDrawGraphics();
 	}
 
 	private void tick(float delta) {

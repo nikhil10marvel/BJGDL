@@ -3,6 +3,7 @@ package com.nikhil.test;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import com.nikhil.core.DrawUtils;
 import com.nikhil.entities.Entity;
 
 public class Enemy extends Entity {
@@ -28,8 +29,9 @@ public class Enemy extends Entity {
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.RED);
-		g.fillRect((int)x, (int)y, (int)width, (int)height);
+		DrawUtils.grph = g;
+		DrawUtils.drawColor = Color.RED;
+		DrawUtils.circle(x, y, 16, true);
 	}
 
 }
