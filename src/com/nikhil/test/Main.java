@@ -38,7 +38,7 @@ public class Main {
 		
 		//Adding cube
 		game.getHandler().addObject(new Player(10, 10, "simple_cube"));
-		//BJGDL can get  or GameObjects with the String ident provided to a GameObject. The GameObject must be in the game, else findGameObject will return null
+		//BJGDL can get Entities or GameObjects with the String ident provided to a GameObject. The GameObject must be in the game, else findGameObject will return null
 	    cube = game.getHandler().findEntity("simple_cube");	//The GameObject you are referring to must be an entity! In this case it is
 	    cube.genHitbox();
 		
