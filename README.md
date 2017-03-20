@@ -17,3 +17,4 @@ On completion, BJGDL is supposed to have -
   [9] Images and Animation  
   [10] Spritesheets  
   [11] Loading levels from Images.
+  [12] Compound Collider  
