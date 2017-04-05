@@ -14,3 +14,7 @@ On completion, BJGDL is supposed to have -
   [6] Simple Networking support, mainly using kyonet  
   [7] 'the change in x' dx and 'the change in y' dy mechanincs  
   [8] Particle System  
+  [9] Images and Animation  
+  [10] Spritesheets  
+  [11] Loading levels from Images.
+  [12] Compound Collider  
