@@ -22,8 +22,8 @@ public class Enemy extends Entity {
 		x += dx * delta;
 		y += dy * delta;
 		
-		if(x <= 0 || x >= Main.game.getWidth() - 16) dx *= -1;
-		if(y <= 0 || y >= Main.game.getHeight() - 16) dy *= -1;
+		if(x <= 0 || x >= Main_OLD.game.getWindowWidth() - 16) dx *= -1;
+		if(y <= 0 || y >= Main_OLD.game.getWindowHeight() - 16) dy *= -1;
 		
 	}
 

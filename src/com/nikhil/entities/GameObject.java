@@ -3,6 +3,8 @@ package com.nikhil.entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import com.nikhil.core.Vector2f;
+
 public abstract class GameObject {
 	
 	//Positional co-ordinates of GameObject
@@ -18,11 +20,36 @@ public abstract class GameObject {
 		this.ident = ident;
 	}
 	
+	public GameObject(Vector2f position, String ident){
+		this.x = position.x;
+		this.y = position.y;
+		this.ident = ident;
+	}
+	
 	public abstract void tick(float delta);
 	public abstract void render(Graphics g);
 
 	public float getX() {
 		return x;
+	}
+	
+	public Vector2f getPosition(){
+		return new Vector2f(x, y);
+	}
+	
+	public void setPosition(Vector2f position){
+		x = position.x;
+		y = position.y;
+	}
+	
+	public Vector2f getSize(){
+		return new Vector2f(width, height);
+	}
+	
+	public void setSize(Vector2f size){
+		width = size.x;
+		height = size.y;
+		genHitbox();
 	}
 
 	public void genHitbox(){
@@ -33,7 +60,6 @@ public abstract class GameObject {
 	public void setX(float x) {
 		this.x = x;
 	}
-
 
 	public float getY() {
 		return y;

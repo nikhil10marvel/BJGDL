@@ -2,16 +2,20 @@ package com.nikhil.test;
 
 import java.awt.event.KeyEvent;
 
+import com.nikhil.core.ClickEvent;
 import com.nikhil.core.Game;
 import com.nikhil.core.InputEvent;
+import com.nikhil.core.Node;
+import com.nikhil.core.Vector2f;
 import com.nikhil.entities.Entity;
 import com.nikhil.images.BufferredImageLoader;
 import com.nikhil.images.PositionedImage;
+import com.nikhil.util.Settings;
 
 /**
  * @author Nikhil
  */
-public class Main {
+public class Main_OLD {
 
 	/**
 	 * @param args
@@ -22,10 +26,15 @@ public class Main {
 	final static float Player_speed = 5f; // The speed of player
 	//Array of Enemies
 	static Enemy[] enemies = {new Enemy(50, 50, "simple_cube_enemy", 5),new Enemy(30, 23, "simple_cube_enemy", 3), new Enemy(98, 98, "simple_cube_enemy", 10)};
+	private static Node node;
 	
 	public static void main(String[] args) {
+		//Initializing the settings
+		Settings settings = new Settings();
+		settings.loadSettings(Main_OLD.class.getClassLoader().getResourceAsStream("Game.settings"));
+		
 		//Starting game
-		game = new Game(800, 600, "Test Game", false);
+		game = new Game(settings);
 		
 		//Generating Hitboxes for enemies
 		enemies[0].genHitbox();
@@ -40,9 +49,11 @@ public class Main {
 	    cube.genHitbox();
 		
 		//Adding Simple Enemies
-		game.getHandler().addObject(enemies[0]);
-		game.getHandler().addObject(enemies[1]);
-		game.getHandler().addObject(enemies[2]);
+		node = new Node();
+		node.addChildren(enemies);
+		game.getHandler().addNode(node);
+	    
+	    //Image tEST
 		game.getHandler().addImage(new PositionedImage(BufferredImageLoader.loadImageURL("https://lh5.ggpht.com/tq3WqEUxtRyBn-d_0t3j6WKNHuJDrmLq-FE3GAYrsAMQFIaS7FIgRLfzzql2SvfvLqto=w300"), 0, 0, null));
 		
 		//cube.setDX(1.3663333f); //Diagonal movement is in the ration 600:800, 1: 1.333333, 1.3663333 is approx to that 
@@ -109,7 +120,30 @@ public class Main {
 				cube.setDX(-1*Player_speed); // multiply by -1 to reverse direction and keep speed positive( because there is really no -500 speed)
 			}
 		};
-
+		game.mouse().setEvent(new ClickEvent() {
+			
+			@Override
+			public void onRelease() {
+				// Debug
+				System.out.println("Release");
+			}
+			
+			@Override
+			public void onPress() {
+				// Debug
+				System.out.println("press");
+			}
+			
+			@Override
+			public void onClick() {
+				// Debug
+				System.out.println("Click");
+				System.out.println(Vector2f.angle(cube.getPosition(), pos));
+				Vector2f bullet_pos = cube.getPosition();
+				Player_Bullet pb = new Player_Bullet(bullet_pos, Vector2f.angle(pos, bullet_pos), game.getHandler());
+				game.getHandler().addObject(pb);
+			}
+		});
 		game.getInput().setEvents(playerLeft, playerRight, playerUp, playerDown);	//Adding all events to inputManager.
 	}
 }

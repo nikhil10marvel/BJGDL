@@ -2,15 +2,21 @@ package com.nikhil.entities;
 
 import java.awt.Rectangle;
 
+import com.nikhil.core.Vector2f;
+
 public abstract class Entity extends GameObject {
 	
 	protected float dx;
 	protected float dy;
-	Rectangle hitbox;
 	
 
 	public Entity(float x, float y, String ident) {
 		super(x, y, ident);
+	}
+
+
+	public Entity(Vector2f position, String ident) {
+		super(position, ident);
 	}
 
 

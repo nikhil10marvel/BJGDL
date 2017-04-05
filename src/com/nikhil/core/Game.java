@@ -3,7 +3,10 @@ package com.nikhil.core;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+
+import com.nikhil.util.Settings;
 
 public class Game extends Canvas implements Runnable {
 
@@ -14,16 +17,30 @@ public class Game extends Canvas implements Runnable {
 	private BufferStrategy strategy;
 	private Handler handler;
 	private KeyInput inputMan;
+	private MouseInput mouse;
 	
 	public KeyInput getInput() {
 		return inputMan;
 	}
 
 	public Game(float width, float height, String title, boolean dispose) {
+		///SplashScreen screen = new SplashScreen(title);
+		//screen.start();
 		handler = new Handler();
 		window = new Window(width, height, title, dispose, this);
 		inputMan = new KeyInput();
+		mouse = new MouseInput();
 		this.addKeyListener(inputMan);
+		this.addMouseListener(mouse);
+	}
+	
+	public Game(Settings settings){
+		handler = settings.getHandler();
+		window = new Window(settings.getWidth(), settings.getHeight(), settings.getTitle(), settings.dispose, this);
+		inputMan = new KeyInput();
+		mouse = new MouseInput();
+		this.addKeyListener(inputMan);
+		this.addMouseListener(mouse);
 	}
 
 	public synchronized void start() {
@@ -45,10 +62,20 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 
+	public float getWindowWidth(){
+		return (float) this.window.WINDOW_WIDTH;
+	}
 	
+	public float getWindowHeight(){
+		return (float) this.window.WINDOW_HEIGHT;
+	}
 	
 	public Handler getHandler() {
 		return handler;
+	}
+	
+	public MouseInput mouse(){
+		return mouse;
 	}
 
 	public void setHandler(Handler handler) {
@@ -103,8 +130,15 @@ public class Game extends Canvas implements Runnable {
 		graphics.setColor(Color.BLACK);
 		graphics.fillRect(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
 		//Adding black background
+		if(handler.setCam == true){
+			((Graphics2D)graphics).translate(handler.cam.x, handler.cam.y);
+		}
 		
 		handler.render(graphics);
+		
+		if(handler.setCam == true){
+			((Graphics2D)graphics).translate(-1*handler.cam.x, -1*handler.cam.y);
+		}
 		
 		//Disposing graphics and showing buffer
 		graphics.dispose();
