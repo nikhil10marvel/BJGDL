@@ -2,6 +2,7 @@ package com.nikhil.core;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
 public class KeyInput extends KeyAdapter{
 	
 	InputEvent[] events;
@@ -42,6 +43,10 @@ public class KeyInput extends KeyAdapter{
 				if(e.getKeyCode() == key) evt.onDeactivated();
 			}
 		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
 	}
 	
 }

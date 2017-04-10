@@ -42,6 +42,7 @@ public class Game extends Canvas implements Runnable {
 		window = new Window(settings.getWidth(), settings.getHeight(), settings.getTitle(), settings.dispose, this);
 		inputMan = new KeyInput();
 		mouse = new MouseInput();
+		screen_rect = new Rectangle(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
 		this.addKeyListener(inputMan);
 		this.addMouseListener(mouse);
 	}

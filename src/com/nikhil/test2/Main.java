@@ -5,10 +5,8 @@ import java.awt.event.KeyEvent;
 import com.nikhil.core.Game;
 import com.nikhil.core.InputEvent;
 import com.nikhil.core.Vector2f;
-import com.nikhil.particle.Particle;
-import com.nikhil.particle.ParticleEmitter;
 import com.nikhil.util.ChaseCam;
-import com.nikhil.util.PerfectedChaseCam;
+
 
 public class Main {
 

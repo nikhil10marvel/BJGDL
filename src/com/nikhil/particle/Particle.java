@@ -4,9 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import com.nikhil.core.DrawUtils;
-import com.nikhil.core.Game;
 import com.nikhil.core.Handler;
-import com.nikhil.core.Vector2f;
 import com.nikhil.core.Window;
 import com.nikhil.entities.Entity;
 
