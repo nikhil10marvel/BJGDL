@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 
 import com.nikhil.util.Settings;
@@ -18,6 +19,7 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	private KeyInput inputMan;
 	private MouseInput mouse;
+	public static Rectangle screen_rect = new Rectangle(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
 	
 	public KeyInput getInput() {
 		return inputMan;
@@ -30,6 +32,7 @@ public class Game extends Canvas implements Runnable {
 		window = new Window(width, height, title, dispose, this);
 		inputMan = new KeyInput();
 		mouse = new MouseInput();
+		screen_rect = new Rectangle(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
 		this.addKeyListener(inputMan);
 		this.addMouseListener(mouse);
 	}
@@ -128,7 +131,8 @@ public class Game extends Canvas implements Runnable {
 		Graphics graphics = getStratGraphics();
 		
 		graphics.setColor(Color.BLACK);
-		graphics.fillRect(0, 0, (int)Window.WINDOW_WIDTH, (int)Window.WINDOW_HEIGHT);
+		graphics.fillRect(screen_rect.x, screen_rect.y, screen_rect.width, screen_rect.height);
+		
 		//Adding black background
 		if(handler.setCam == true){
 			((Graphics2D)graphics).translate(handler.cam.x, handler.cam.y);

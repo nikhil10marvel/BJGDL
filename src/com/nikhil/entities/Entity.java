@@ -48,7 +48,7 @@ public abstract class Entity extends GameObject {
 	}
 	
 	public boolean intersects(Entity other){
-		if(other.getHitbox() == null) {
+		if(other.getHitbox().width == 0 || other.getHitbox().height == 0) {
 			throw new RuntimeException("No Hit box for Entity:" + other.ident);
 		} else if(hitbox == null){
 			throw new RuntimeException("Hit box not detected");

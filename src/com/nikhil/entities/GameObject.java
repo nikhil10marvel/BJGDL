@@ -94,5 +94,9 @@ public abstract class GameObject {
 		boolean inter = hitbox.intersects(other.getX(), other.getY(), other.getWidth(), other.getHeight());
 		return inter;
 	}
+	
+	public static boolean rect_intersects(Rectangle rectangle, GameObject object){
+		return rectangle.intersects(object.x, object.y, object.width, object.height);
+	}
 
 }

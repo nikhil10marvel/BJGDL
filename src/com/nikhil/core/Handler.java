@@ -1,6 +1,7 @@
 package com.nikhil.core;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
@@ -23,16 +24,27 @@ public class Handler{
 	protected boolean setCam = false;
 	
 	
-	public void addObject(GameObject obj){
+	public void addIterObject(GameObject obj){
 		this.objs.listIterator().add(obj);
+	}
+	
+	public void addObject(GameObject OBJ){
+		this.objs.add(OBJ);
 	}
 	
 	public void addNode(Node node){
 		nodes.add(node);
 	}
 	
+	public void removeIterObject(GameObject obj){
+		while (objs.listIterator().hasNext()) {
+			GameObject found_obj = (GameObject) objs.listIterator().next();
+			if(found_obj.equals(obj)) objs.listIterator().remove();
+		}
+	}
+	
 	public void removeObject(GameObject obj){
-		this.objs.listIterator().remove();
+		objs.remove(obj);
 	}
 	
 	public Vector2f getCam(){
@@ -118,7 +130,7 @@ public class Handler{
 		for (GameObject tempObject : objs) {
 			if(tempObject.ident.startsWith(starts)) found_objs.add(tempObject);
 		}
-		System.out.println(found_objs.toString());
+		//System.out.println(found_objs.toString());
 		return found_objs;
 	}
 	
@@ -132,6 +144,51 @@ public class Handler{
 			}
 		}
 		return ent;
+	}
+	
+	public ArrayList<GameObject> findGameObjectsInRange(float x, float y, float range){
+		ArrayList<GameObject> objects_found = new ArrayList<GameObject>();
+		Rectangle col = new Rectangle((int)x, (int)y, (int)range, (int)range);
+		for(GameObject tempObject : objs){
+			if(GameObject.rect_intersects(col, tempObject)){
+				objects_found.add(tempObject);
+			}
+		}
+		return objects_found;
+	}
+	
+	public ArrayList<Entity> findEntitiesInRange(float x, float y, float range){
+		ArrayList<Entity> objects_found = new ArrayList<Entity>();
+		Rectangle col = new Rectangle((int)x, (int)y, (int)range, (int)range);
+		for(GameObject tempObject : objs){
+			if(tempObject instanceof Entity){
+				if(GameObject.rect_intersects(col, tempObject)){
+					objects_found.add((Entity)tempObject);
+				}
+			}
+		}
+		return objects_found;
+	}
+	
+	public ArrayList<Entity> findEntityTypeInRange(float x, float y, float range, String type){
+		ArrayList<Entity> entities_in_range = findEntitiesInRange(x, y, range);
+		ArrayList<Entity> found = new ArrayList<Entity>();
+		for (Entity entity : entities_in_range) {
+			if(entity.ident.startsWith(type)){
+				found.add(entity);
+			}
+		}
+		return found;
+	}
+	
+	public ArrayList<GameObject> findGameObjectTypeInRange(float x, float y, float range, String type){
+		ArrayList<GameObject> found = new ArrayList<GameObject>(); 
+		for (GameObject tempObject : findGameObjectsInRange(x, y, range)) {
+			if(tempObject.ident.startsWith(type)){
+				found.add(tempObject);
+			}
+		}
+		return found;
 	}
 
 }

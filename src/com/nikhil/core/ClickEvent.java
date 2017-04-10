@@ -9,8 +9,8 @@ public abstract class ClickEvent {
 	public ClickEvent() {
 	}
 	
-	public abstract void onClick();
-	public abstract void onPress();
-	public abstract void onRelease();
+	public abstract void onClick(int button);
+	public abstract void onPress(int button);
+	public abstract void onRelease(int button);
 
 }

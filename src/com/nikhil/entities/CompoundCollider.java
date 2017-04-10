@@ -32,8 +32,8 @@ public class CompoundCollider {
 			if(entity.intersects(tempObject)){
 				if(down().intersects(tempObject.hitbox)) {entity.y = tempObject.y - height - 2; entity.dy = 0;}
 				if(up().intersects(tempObject.hitbox)) {entity.y = tempObject.y + tempObject.height + 2; entity.dy = 0;}
-				if(right().intersects(tempObject.hitbox)) {entity.x = tempObject.x - width; entity.dx = 0;}
-				if(left().intersects(tempObject.hitbox)) {entity.x = tempObject.x + tempObject.width; entity.dx = 0;}
+				if(right().intersects(tempObject.hitbox)) {entity.x = tempObject.x - tempObject.width - 2; entity.dx = 0;}
+				if(left().intersects(tempObject.hitbox)) {entity.x = tempObject.x + tempObject.width + 2; entity.dx = 0;}
 			}
 		}
 	}
@@ -47,11 +47,11 @@ public class CompoundCollider {
 	}
 	
 	private Rectangle up(){
-		return new Rectangle((int)x, (int)y, (int)width, (int)(height/2));
+		return new Rectangle((int)x, (int)y, (int)(width-(width/8)), (int)(height/2));
 	}
 	
 	private Rectangle down(){
-		return new Rectangle((int)x, (int)(y+(height/2)), (int)width, (int)(height/2));
+		return new Rectangle((int)x, (int)(y+(height/2)), (int)(width-(width/8)), (int)(height/2));
 	}
 	
 	

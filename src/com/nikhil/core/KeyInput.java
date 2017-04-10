@@ -27,6 +27,7 @@ public class KeyInput extends KeyAdapter{
 			for (int i = 0; i < events.length; i++) {
 				InputEvent evt = events[i];
 				int key = evt.keyCode;
+				// System.out.println(key);
 				if(e.getKeyCode() == key) evt.onActivated();
 			}
 		}

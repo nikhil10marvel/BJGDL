@@ -67,7 +67,7 @@ public class ParticleEmitter extends Entity{
 		newParticle.setY(y);
 		newParticle.setDX(particleDX);
 		newParticle.setDY(particleDY);
-		handler.addObject(newParticle);
+		handler.addIterObject(newParticle);
 	}
 	
 	

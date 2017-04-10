@@ -22,17 +22,17 @@ public class MouseInput extends MouseAdapter{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(set) { event.onClick(); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
+		if(set) { event.onClick(e.getButton()); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(set) {event.onPress(); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
+		if(set) {event.onPress(e.getButton()); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		if(set) {event.onRelease(); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
+		if(set) {event.onRelease(e.getButton()); event.x = e.getX(); event.y = e.getY(); event.pos = new Vector2f(e.getX(), e.getY());}
 	}
 	
 	public void disable(){

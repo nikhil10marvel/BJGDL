@@ -37,6 +37,7 @@ public class ChaseCam extends Entity {
 		Vector2f vector2f = object.getPosition();
 		vector2f.add(offset);
 		vector2f.mult(new Vector2f(-1, -1));
+		//vector2f.sub(new Vector2f(-16, 0));
 		setPosition(vector2f);
 		handler.setCam(vector2f);
 	}

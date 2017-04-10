@@ -123,19 +123,19 @@ public class Main_OLD {
 		game.mouse().setEvent(new ClickEvent() {
 			
 			@Override
-			public void onRelease() {
+			public void onRelease(int button) {
 				// Debug
 				System.out.println("Release");
 			}
 			
 			@Override
-			public void onPress() {
+			public void onPress(int button) {
 				// Debug
 				System.out.println("press");
 			}
 			
 			@Override
-			public void onClick() {
+			public void onClick(int button) {
 				// Debug
 				System.out.println("Click");
 				System.out.println(Vector2f.angle(cube.getPosition(), pos));

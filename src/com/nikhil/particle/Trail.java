@@ -49,6 +49,7 @@ public abstract class Trail extends Entity {
 	public void render(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setComposite(makeTRANSPERANT(alpha));
+		g2d.setColor(color);
 		
 		trail_render(g2d);
 		
